@@ -1,0 +1,8 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+$_ = `urb pro "$ARGV[0]"`;
+my ($a, $b, $c, $d) = /^(.).(.) (.).(.)/;
+exec qw(urb doc dev hoon runes), "$a$b", "$a$b$c$d";

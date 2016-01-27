@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+my $say = $ENV{URB_SAY}
+  or die "Please set \$URB_SAY to some command that reads text for you.\n";
+
+$_ = `urb pro '$ARGV[0]'`;
+chomp;
+s/ /... /g;
+exec "echo '$_' | $say";

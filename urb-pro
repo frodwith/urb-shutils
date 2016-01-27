@@ -1,0 +1,55 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+my %t;
+while (<DATA>) {
+  my ($phon, $char) = /([a-z]{3})  (.)/;
+  $t{$char} = $phon;
+}
+
+my $str = $ARGV[0];
+die "Pronounce what?\n" unless defined $str;
+
+my @chars = split //, $str;
+my @sylls = map { exists $t{$_} ? $t{$_} : $_ } @chars;
+$,=' ';
+print @sylls, "\n";
+
+1;
+
+__DATA__
+ace   
+bar  | 
+bas  \ 
+buc  $ 
+cab  _ 
+cen  % 
+col  : 
+com  , 
+doq  " 
+dot  . 
+fas  / 
+gal  <
+gar  >
+hax  #
+hep  -
+kel  {
+ker  }
+ket  ^
+lus  +
+pam  &
+pat  @
+pel  (
+per  )
+sel  [
+sem  ;
+ser  ]
+sig  ~
+soq  '
+tar  *
+tec  `
+tis  =
+wut  ?
+zap  !
